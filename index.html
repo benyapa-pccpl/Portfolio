@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="th">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="เว็บไซต์แฟ้มสะสมผลงานนักเรียนชั้น ม.3 สำหรับการยื่นสมัครเข้าศึกษาต่อชั้น ม.4"
+    />
+    <title>Portfolio Student | E-Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      :root {
+        color-scheme: light;
+      }
+      body {
+        font-family: "Noto Sans Thai", "Segoe UI", sans-serif;
+      }
+      .section-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(8px);
+      }
+    </style>
+  </head>
+  <body class="bg-slate-50 text-slate-800">
+    <header class="sticky top-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+        <a href="#hero" class="text-lg font-semibold tracking-wide text-sky-700">E-Portfolio</a>
+        <div class="flex gap-4 text-sm font-medium text-slate-600">
+          <a href="#about" class="hover:text-sky-700">เกี่ยวกับ</a>
+          <a href="#skills" class="hover:text-sky-700">ทักษะ</a>
+          <a href="#projects" class="hover:text-sky-700">ผลงาน</a>
+          <a href="#contact" class="hover:text-sky-700">ติดต่อ</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="hero" class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
+      <section class="grid items-center gap-8 rounded-[2rem] border border-slate-200 bg-gradient-to-br from-sky-50 via-white to-amber-50 p-6 shadow-sm sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-12">
+        <div class="space-y-6">
+          <span class="inline-flex rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-700">
+            Portfolio สำหรับนักเรียนชั้น ม.3
+          </span>
+          <div class="space-y-3">
+            <h1 class="text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
+              สวัสดีค่ะ ฉันคือ นางสาว [ชื่อ-สกุล]
+            </h1>
+            <p class="text-lg text-slate-600">
+              นักเรียนชั้น ม.3 โรงเรียน [ชื่อโรงเรียน] ที่มุ่งมั่นจะพัฒนาตนเองสู่แผนการเรียน
+              <span class="font-semibold text-sky-700">[สายการเรียนที่ต้องการ]</span>
+            </p>
+          </div>
+          <p class="max-w-xl text-base leading-8 text-slate-700">
+            ผม/ฉันเชื่อว่าความมุ่งมั่น ความรับผิดชอบ และการเรียนรู้จากประสบการณ์ต่าง ๆ
+            จะช่วยให้เติบโตเป็นผู้เรียนที่พร้อมรับใช้สังคมได้อย่างมีคุณค่าและเตรียมพร้อมสำหรับการศึกษาต่อ
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a
+              href="#projects"
+              class="rounded-full bg-sky-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800"
+            >
+              ดูผลงานเด่น
+            </a>
+            <a
+              href="#contact"
+              class="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-sky-600 hover:text-sky-700"
+            >
+              ติดต่อฉัน
+            </a>
+          </div>
+          <p class="text-sm text-slate-500">
+            เนื้อหาตัวอย่างนี้เหมาะสำหรับการปรับแก้ให้ตรงกับข้อมูลจริงของนักเรียนและสายการเรียนที่สนใจ
+          </p>
+        </div>
+
+        <div class="rounded-[1.5rem] bg-white p-4 shadow-md">
+          <svg viewBox="0 0 400 480" class="w-full rounded-[1.25rem]" role="img" aria-label="ภาพตัวอย่างนักเรียน">
+            <rect width="400" height="480" rx="28" fill="#f8fbff" />
+            <circle cx="200" cy="170" r="90" fill="#f4cfb6" />
+            <path d="M115 420c20-105 72-150 85-150s65 45 85 150" fill="#2d6cdf" />
+            <rect x="132" y="200" width="136" height="146" rx="30" fill="#1f3b5f" />
+            <circle cx="200" cy="165" r="72" fill="#f3caa9" />
+            <path d="M138 238c15-40 39-62 62-62s47 22 62 62" fill="#1f3b5f" />
+            <path d="M140 182c18-60 37-90 60-90s42 30 60 90" fill="#0f172a" />
+            <circle cx="175" cy="160" r="6" fill="#0f172a" />
+            <circle cx="225" cy="160" r="6" fill="#0f172a" />
+            <path d="M178 192c10 10 34 10 44 0" stroke="#8b4f33" stroke-width="5" fill="none" stroke-linecap="round" />
+            <rect x="120" y="330" width="160" height="70" rx="20" fill="#fef3c7" />
+            <text x="200" y="370" text-anchor="middle" fill="#b45309" font-size="28" font-family="Arial, sans-serif">M.3</text>
+          </svg>
+        </div>
+      </section>
+
+      <section id="about" class="mt-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
+        <div class="section-card rounded-[1.5rem] border border-slate-200 p-6 shadow-sm sm:p-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">About & Education</p>
+          <h2 class="mt-3 text-2xl font-bold text-slate-900">ประวัติส่วนตัวและการศึกษา</h2>
+          <ul class="mt-5 space-y-3 text-slate-700">
+            <li>• ชื่อ-สกุล: นางสาว [ชื่อ-สกุล]</li>
+            <li>• โรงเรียน: [ชื่อโรงเรียน]</li>
+            <li>• แผนการเรียน: [สายการเรียนที่สนใจ]</li>
+            <li>• เกรดเฉลี่ย: [GPAX] (ตัวอย่างข้อมูลที่ต้องปรับให้ตรงกับความจริง)</li>
+            <li>• จุดเด่น: มีความรับผิดชอบ กระตือรือร้น และพร้อมเรียนรู้สิ่งใหม่</li>
+          </ul>
+        </div>
+
+        <div class="section-card rounded-[1.5rem] border border-slate-200 p-6 shadow-sm sm:p-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">Mindset</p>
+          <h2 class="mt-3 text-2xl font-bold text-slate-900">ทัศนคติและเป้าหมาย</h2>
+          <div class="mt-5 space-y-4 text-slate-700">
+            <p>
+              ฉันให้ความสำคัญกับการพัฒนาตนเองอย่างต่อเนื่องทั้งด้านความรู้ ความคิดสร้างสรรค์
+              และความร่วมมือกับผู้อื่น
+            </p>
+            <p>
+              เป้าหมายของฉันคือเติบโตเป็นนักเรียนที่มีคุณภาพ มีความรับผิดชอบ และสามารถนำความรู้
+              ไปใช้แก้ปัญหาในชีวิตประจำวันและสังคมได้อย่างมีประสิทธิภาพ
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills" class="mt-10 rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">Skills</p>
+            <h2 class="text-2xl font-bold text-slate-900">ทักษะและความสามารถ</h2>
+          </div>
+          <p class="max-w-2xl text-sm text-slate-600">
+            นำเสนอในรูปแบบที่เข้าใจง่ายโดยเน้นทักษะหลักที่แสดงให้เห็นถึงศักยภาพของนักเรียน
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-3">
+          <div class="rounded-[1.25rem] border border-slate-200 bg-sky-50 p-5">
+            <h3 class="text-lg font-semibold text-slate-900">ทักษะวิชาการ</h3>
+            <ul class="mt-4 space-y-3 text-sm text-slate-700">
+              <li>
+                <div class="mb-1 flex justify-between">
+                  <span>ภาษาไทย</span><span>85%</span>
+                </div>
+                <div class="h-2 rounded-full bg-sky-200"><div class="h-2 w-[85%] rounded-full bg-sky-600"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between">
+                  <span>คณิตศาสตร์</span><span>80%</span>
+                </div>
+                <div class="h-2 rounded-full bg-sky-200"><div class="h-2 w-[80%] rounded-full bg-sky-600"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between">
+                  <span>วิทยาศาสตร์</span><span>82%</span>
+                </div>
+                <div class="h-2 rounded-full bg-sky-200"><div class="h-2 w-[82%] rounded-full bg-sky-600"></div></div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="rounded-[1.25rem] border border-slate-200 bg-amber-50 p-5">
+            <h3 class="text-lg font-semibold text-slate-900">Soft Skills</h3>
+            <ul class="mt-4 space-y-3 text-sm text-slate-700">
+              <li>• ทำงานเป็นทีมและรับฟังผู้อื่น</li>
+              <li>• มีความรับผิดชอบและกระตือรือร้น</li>
+              <li>• สื่อสารอย่างชัดเจนและเป็นมิตร</li>
+            </ul>
+          </div>
+
+          <div class="rounded-[1.25rem] border border-slate-200 bg-emerald-50 p-5">
+            <h3 class="text-lg font-semibold text-slate-900">ความสามารถพิเศษ</h3>
+            <ul class="mt-4 space-y-3 text-sm text-slate-700">
+              <li>• Canva / PowerPoint สำหรับงานนำเสนอ</li>
+              <li>• การใช้เครื่องมือดิจิทัลพื้นฐาน</li>
+              <li>• มีความคิดสร้างสรรค์และพร้อมทดลองสิ่งใหม่</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="mt-10">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">Awards & Projects</p>
+            <h2 class="text-2xl font-bold text-slate-900">ผลงานและเกียรติบัตรเด่น</h2>
+          </div>
+          <p class="max-w-2xl text-sm text-slate-600">
+            แสดงผลงานหลัก 3–5 ชิ้นในรูปแบบการ์ดที่อ่านง่ายและน่าจดจำ
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
+            <div class="h-32 bg-gradient-to-br from-sky-400 to-cyan-500"></div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900">โครงงานวิทยาศาสตร์</h3>
+              <p class="mt-2 text-sm text-slate-600">พัฒนางานวิจัยและนำเสนอผลลัพธ์ในรูปแบบที่น่าสนใจ</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
+            <div class="h-32 bg-gradient-to-br from-amber-400 to-orange-500"></div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900">เกียรติบัตรแข่งขัน</h3>
+              <p class="mt-2 text-sm text-slate-600">ได้รับรางวัลจากกิจกรรมสร้างสรรค์และกิจกรรมส่งเสริมทักษะ</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
+            <div class="h-32 bg-gradient-to-br from-emerald-400 to-green-600"></div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900">กิจกรรมจิตอาสา</h3>
+              <p class="mt-2 text-sm text-slate-600">มีส่วนร่วมในการช่วยเหลือชุมชนและพัฒนาสังคมอย่างต่อเนื่อง</p>
+            </div>
+          </article>
+          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
+            <div class="h-32 bg-gradient-to-br from-fuchsia-400 to-violet-500"></div>
+            <div class="p-5">
+              <h3 class="font-semibold text-slate-900">ผลงานดิจิทัล</h3>
+              <p class="mt-2 text-sm text-slate-600">สร้างสื่อการเรียนรู้และงานนำเสนอด้วยเครื่องมือดิจิทัล</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="mt-10 rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">Activities</p>
+            <h2 class="text-2xl font-bold text-slate-900">กิจกรรมและประสบการณ์</h2>
+          </div>
+          <p class="max-w-2xl text-sm text-slate-600">
+            ภาพกิจกรรมช่วยให้ผู้รับชมเห็นถึงความกระตือรือร้นและความพร้อมในการเรียนต่อ
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-6 md:grid-cols-2">
+          <div class="overflow-hidden rounded-[1.25rem] border border-slate-200">
+            <div class="h-48 bg-gradient-to-br from-sky-100 to-white p-6">
+              <div class="flex h-full items-end rounded-[1rem] border border-sky-200 bg-white/60 p-4">
+                <p class="text-lg font-semibold text-slate-800">กิจกรรมคณะกรรมการนักเรียน</p>
+              </div>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-[1.25rem] border border-slate-200">
+            <div class="h-48 bg-gradient-to-br from-amber-100 to-white p-6">
+              <div class="flex h-full items-end rounded-[1rem] border border-amber-200 bg-white/60 p-4">
+                <p class="text-lg font-semibold text-slate-800">โครงการจิตอาสาและบริการชุมชน</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="mt-10 rounded-[1.5rem] border border-slate-200 bg-slate-900 p-6 text-white shadow-sm sm:p-8">
+        <div class="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">Contact</p>
+            <h2 class="mt-3 text-2xl font-bold">ช่องทางติดต่อ</h2>
+            <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300">
+              หากต้องการข้อมูลเพิ่มเติม สามารถติดต่อผ่านช่องทางด้านล่าง เพื่อขอคำแนะนำหรือแลกเปลี่ยนข้อมูลเพิ่มเติม
+            </p>
+          </div>
+          <div class="rounded-[1.25rem] bg-white/10 p-5">
+            <ul class="space-y-3 text-sm text-slate-200">
+              <li>📧 อีเมล: [email@example.com]</li>
+              <li>📱 โทรศัพท์: [08x-xxx-xxxx]</li>
+              <li>💬 Line / Facebook: [ชื่อบัญชี]</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
