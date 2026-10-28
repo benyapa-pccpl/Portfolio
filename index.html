@@ -1,271 +1,594 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="เว็บไซต์แฟ้มสะสมผลงานนักเรียนชั้น ม.3 สำหรับการยื่นสมัครเข้าศึกษาต่อชั้น ม.4"
+      content="แฟ้มสะสมผลงานนักเรียนชั้น ม.3 สำหรับการยื่นสมัครเข้าศึกษาต่อชั้น ม.4 - ด.ญ.เบญญาภา ทองทา (พอใจ)"
     />
-    <title>Portfolio Student | E-Portfolio</title>
+    <title>Portfolio | ด.ญ.เบญญาภา ทองทา (พอใจ)</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Prompt & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: {
+                50: '#FAF7F2',
+                100: '#F5EFE6',
+                200: '#EBE2D5',
+                300: '#DDD0BE',
+              },
+              brown: {
+                50: '#F8F5F2',
+                100: '#EFE7E1',
+                300: '#B89F91',
+                500: '#8C6A58',
+                600: '#755443',
+                700: '#5E4132',
+                800: '#4A3225',
+              },
+              powder: {
+                50: '#F0F7FB',
+                100: '#E0F2FE',
+                200: '#BAE6FD',
+                300: '#7DD3FC',
+                400: '#38BDF8',
+                500: '#0284C7',
+                600: '#0369A1',
+              },
+            },
+            fontFamily: {
+              sans: ['Prompt', 'Plus Jakarta Sans', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+
     <style>
       :root {
         color-scheme: light;
       }
       body {
-        font-family: "Noto Sans Thai", "Segoe UI", sans-serif;
+        font-family: 'Prompt', sans-serif;
+        background-color: #FAF7F2;
+        color: #4A3225;
       }
-      .section-card {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(8px);
+      /* Custom Soft Glassmorphism */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .glass-nav {
+        background: rgba(250, 247, 242, 0.85);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
     </style>
   </head>
-  <body class="bg-slate-50 text-slate-800">
-    <header class="sticky top-0 z-20 border-b border-slate-200/80 bg-white/90 backdrop-blur">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        <a href="#hero" class="text-lg font-semibold tracking-wide text-sky-700">E-Portfolio</a>
-        <div class="flex gap-4 text-sm font-medium text-slate-600">
-          <a href="#about" class="hover:text-sky-700">เกี่ยวกับ</a>
-          <a href="#skills" class="hover:text-sky-700">ทักษะ</a>
-          <a href="#projects" class="hover:text-sky-700">ผลงาน</a>
-          <a href="#contact" class="hover:text-sky-700">ติดต่อ</a>
+  <body class="min-h-screen antialiased selection:bg-powder-200 selection:text-brown-800">
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-50 glass-nav border-b border-brown-100 transition-all duration-300">
+      <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3.5 sm:px-8">
+        <a href="#hero" class="group flex items-center gap-2 text-lg font-semibold tracking-wide text-brown-700">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-powder-100 text-sm font-bold text-powder-600 transition group-hover:bg-powder-200">
+            P
+          </span>
+          <span class="font-medium text-brown-800 group-hover:text-powder-600 transition">E-Portfolio</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden gap-7 text-sm font-medium text-brown-600 md:flex">
+          <a href="#about" class="transition hover:text-powder-600">เกี่ยวกับ</a>
+          <a href="#skills" class="transition hover:text-powder-600">ทักษะ</a>
+          <a href="#projects" class="transition hover:text-powder-600">ผลงาน</a>
+          <a href="#activities" class="transition hover:text-powder-600">กิจกรรม</a>
+          <a href="#contact" class="transition hover:text-powder-600">ติดต่อ</a>
         </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button
+          id="menu-btn"
+          aria-label="Toggle Navigation Menu"
+          class="flex h-9 w-9 items-center justify-center rounded-full border border-brown-200 text-brown-700 md:hidden hover:bg-cream-100"
+        >
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
       </nav>
+
+      <!-- Mobile Dropdown Menu -->
+      <div id="mobile-menu" class="hidden border-b border-brown-100 bg-cream-50 px-6 py-4 md:hidden">
+        <div class="flex flex-col gap-3 text-sm font-medium text-brown-700">
+          <a href="#about" class="mobile-link py-1 transition hover:text-powder-600">เกี่ยวกับ</a>
+          <a href="#skills" class="mobile-link py-1 transition hover:text-powder-600">ทักษะ</a>
+          <a href="#projects" class="mobile-link py-1 transition hover:text-powder-600">ผลงาน</a>
+          <a href="#activities" class="mobile-link py-1 transition hover:text-powder-600">กิจกรรม</a>
+          <a href="#contact" class="mobile-link py-1 transition hover:text-powder-600">ติดต่อ</a>
+        </div>
+      </div>
     </header>
 
-    <main id="hero" class="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8 lg:py-16">
-      <section class="grid items-center gap-8 rounded-[2rem] border border-slate-200 bg-gradient-to-br from-sky-50 via-white to-amber-50 p-6 shadow-sm sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-12">
-        <div class="space-y-6">
-          <span class="inline-flex rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-700">
-            Portfolio สำหรับนักเรียนชั้น ม.3
-          </span>
+    <main id="hero" class="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8 lg:py-14">
+      <!-- Hero Section Card -->
+      <section class="relative overflow-hidden rounded-[2.5rem] border border-brown-100 bg-gradient-to-br from-cream-50 via-white to-powder-50 p-6 shadow-sm sm:p-10 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-10 lg:p-14">
+        <!-- Aesthetic background blobs -->
+        <div class="pointer-events-none absolute -right-20 -top-20 h-72 w-72 rounded-full bg-powder-100/60 blur-3xl"></div>
+        <div class="pointer-events-none absolute -bottom-20 -left-20 h-72 w-72 rounded-full bg-cream-200/50 blur-3xl"></div>
+
+        <div class="relative space-y-6">
+          <div class="inline-flex items-center gap-2 rounded-full border border-powder-200 bg-powder-50/90 px-4 py-1.5 text-xs font-medium text-powder-600 shadow-sm">
+            <span class="h-2 w-2 rounded-full bg-powder-400"></span>
+            แฟ้มสะสมผลงานสำหรับการยื่นสมัครเข้าศึกษาต่อ ม.4
+          </div>
+
           <div class="space-y-3">
-            <h1 class="text-3xl font-bold leading-tight text-slate-900 sm:text-4xl lg:text-5xl">
-              สวัสดีค่ะ หนูชื่อด.ญ.เบญญาภา ทองทา (พอใจ)
+            <h1 class="text-3xl font-bold tracking-tight text-brown-800 sm:text-4xl lg:text-5xl leading-tight">
+              สวัสดีค่ะ หนูชื่อ<br />
+              <span class="text-brown-700">ด.ญ.เบญญาภา ทองทา</span>
+              <span class="text-powder-500 font-medium">(พอใจ)</span>
             </h1>
-            <p class="text-lg text-slate-600">
-              นักเรียนชั้น ม.3 โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก ที่มุ่งมั่นจะพัฒนาตนเองสู่แผนการเรียน
-              <span class="font-semibold text-sky-700">วิทย์-คณิต</span>
+            <p class="text-base text-brown-600 sm:text-lg">
+              นักเรียนชั้น ม.3 โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก มุ่งมั่นที่จะพัฒนาตนเองสู่แผนการเรียน
+              <span class="inline-block rounded-md bg-powder-100 px-2 py-0.5 font-semibold text-powder-600">วิทย์-คณิต</span>
             </p>
           </div>
-          <p class="max-w-xl text-base leading-8 text-slate-700">
-            หนูเชื่อว่าความมุ่งมั่น ความรับผิดชอบ และการเรียนรู้จากประสบการณ์ต่าง ๆ
-            จะช่วยให้เติบโตเป็นผู้เรียนที่พร้อมรับใช้สังคมได้อย่างมีคุณค่าและเตรียมพร้อมสำหรับการศึกษาต่อ
+
+          <p class="max-w-xl text-sm leading-relaxed text-brown-600 sm:text-base">
+            หนูเชื่อว่าความมุ่งมั่น ความรับผิดชอบ และการเรียนรู้จากประสบการณ์ต่าง ๆ จะช่วยให้เติบโตเป็นผู้เรียนที่พร้อมรับใช้สังคมได้อย่างมีคุณค่าและเตรียมพร้อมสำหรับการศึกษาต่อ
           </p>
-          <div class="flex flex-wrap gap-3">
+
+          <div class="flex flex-wrap items-center gap-3 pt-2">
             <a
               href="#projects"
-              class="rounded-full bg-sky-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-sky-800"
+              class="inline-flex items-center justify-center rounded-full bg-brown-600 px-6 py-3 text-sm font-medium text-cream-50 shadow-sm transition hover:bg-brown-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-brown-500 focus:ring-offset-2"
             >
               ดูผลงานเด่น
             </a>
             <a
               href="#contact"
-              class="rounded-full border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-sky-600 hover:text-sky-700"
+              class="inline-flex items-center justify-center rounded-full border border-brown-300 bg-white/80 px-6 py-3 text-sm font-medium text-brown-700 shadow-sm transition hover:border-powder-400 hover:bg-powder-50 hover:text-powder-600 focus:outline-none"
             >
               ติดต่อฉัน
             </a>
           </div>
-          <p class="text-sm text-slate-500">
-            เนื้อหาตัวอย่างนี้เหมาะสำหรับการปรับแก้ให้ตรงกับข้อมูลจริงของนักเรียนและสายการเรียนที่สนใจ
+
+          <p class="text-xs text-brown-300">
+            *เนื้อหาตัวอย่างนี้สามารถปรับเปลี่ยนให้ตรงตามข้อมูลจริงและสายการเรียนที่ต้องการได้
           </p>
         </div>
 
-        <div class="rounded-[1.5rem] bg-white p-4 shadow-md">
-          <svg viewBox="0 0 400 480" class="w-full rounded-[1.25rem]" role="img" aria-label="ภาพตัวอย่างนักเรียน">
-            <rect width="400" height="480" rx="28" fill="#f8fbff" />
-            <circle cx="200" cy="170" r="90" fill="#f4cfb6" />
-            <path d="M115 420c20-105 72-150 85-150s65 45 85 150" fill="#2d6cdf" />
-            <rect x="132" y="200" width="136" height="146" rx="30" fill="#1f3b5f" />
-            <circle cx="200" cy="165" r="72" fill="#f3caa9" />
-            <path d="M138 238c15-40 39-62 62-62s47 22 62 62" fill="#1f3b5f" />
-            <path d="M140 182c18-60 37-90 60-90s42 30 60 90" fill="#0f172a" />
-            <circle cx="175" cy="160" r="6" fill="#0f172a" />
-            <circle cx="225" cy="160" r="6" fill="#0f172a" />
-            <path d="M178 192c10 10 34 10 44 0" stroke="#8b4f33" stroke-width="5" fill="none" stroke-linecap="round" />
-            <rect x="120" y="330" width="160" height="70" rx="20" fill="#fef3c7" />
-            <text x="200" y="370" text-anchor="middle" fill="#b45309" font-size="28" font-family="Arial, sans-serif">M.3</text>
-          </svg>
-        </div>
-      </section>
-
-      <section id="about" class="mt-10 grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
-        <div class="section-card rounded-[1.5rem] border border-slate-200 p-6 shadow-sm sm:p-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">About & Education</p>
-          <h2 class="mt-3 text-2xl font-bold text-slate-900">ประวัติส่วนตัวและการศึกษา</h2>
-          <ul class="mt-5 space-y-3 text-slate-700">
-            <li>• ชื่อ-สกุล: ด.ญ.เบญญาภา ทองทา</li>
-            <li>• โรงเรียน: โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก</li>
-            <li>• แผนการเรียน: วิทย์-คณิต</li>
-            <li>• เกรดเฉลี่ย: 3.97 </li>
-            <li>• จุดเด่น: มีความรับผิดชอบ กระตือรือร้น และพร้อมเรียนรู้สิ่งใหม่</li>
-          </ul>
-        </div>
-
-        <div class="section-card rounded-[1.5rem] border border-slate-200 p-6 shadow-sm sm:p-8">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">Mindset</p>
-          <h2 class="mt-3 text-2xl font-bold text-slate-900">ทัศนคติและเป้าหมาย</h2>
-          <div class="mt-5 space-y-4 text-slate-700">
-            <p>
-              ฉันให้ความสำคัญกับการพัฒนาตนเองอย่างต่อเนื่องทั้งด้านความรู้ ความคิดสร้างสรรค์
-              และความร่วมมือกับผู้อื่น
-            </p>
-            <p>
-              เป้าหมายของฉันคือเติบโตเป็นนักเรียนที่มีคุณภาพ มีความรับผิดชอบ และสามารถนำความรู้
-              ไปใช้แก้ปัญหาในชีวิตประจำวันและสังคมได้อย่างมีประสิทธิภาพ
-            </p>
+        <!-- Student Illustration / Avatar Box -->
+        <div class="relative mt-10 lg:mt-0 flex justify-center">
+          <div class="relative w-full max-w-sm overflow-hidden rounded-[2rem] border border-brown-100 bg-white p-4 shadow-md transition duration-300 hover:shadow-lg">
+            <div class="relative overflow-hidden rounded-[1.5rem] bg-gradient-to-b from-powder-50 via-cream-50 to-cream-100 p-4">
+              <svg viewBox="0 0 400 480" class="w-full h-auto drop-shadow-sm" role="img" aria-label="ภาพตัวอย่างนักเรียนมินิมอล">
+                <!-- Outer background circle -->
+                <circle cx="200" cy="240" r="180" fill="#E0F2FE" opacity="0.4" />
+                <rect width="400" height="480" rx="28" fill="none" />
+                
+                <!-- Hair Back -->
+                <path d="M120 180C120 110 280 110 280 180V320H120V180Z" fill="#4A3225" />
+                
+                <!-- Head & Neck -->
+                <rect x="180" y="220" width="40" height="50" rx="10" fill="#FCE7D0" />
+                <circle cx="200" cy="170" r="75" fill="#FCE7D0" />
+                
+                <!-- Student Uniform Shirt -->
+                <path d="M105 420c15-95 65-135 95-135s80 40 95 135" fill="#FFFFFF" stroke="#EBE2D5" stroke-width="2" />
+                <!-- Collar -->
+                <path d="M165 285L200 320L235 285L200 300Z" fill="#BAE6FD" />
+                <!-- Tie/Ribbon -->
+                <path d="M195 300H205V360H195Z" fill="#0284C7" />
+                
+                <!-- Hair Front (Bangs / Framing) -->
+                <path d="M125 160c20-45 65-65 75-65s55 20 75 65c-15-20-40-30-75-30s-60 10-75 30Z" fill="#362419" />
+                <path d="M125 160c5 20 15 50 20 70c-15-20-15-45-20-70Z" fill="#362419" />
+                <path d="M275 160c-5 20-15 50-20 70c15-20 15-45 20-70Z" fill="#362419" />
+                
+                <!-- Face Features -->
+                <!-- Eyes -->
+                <ellipse cx="170" cy="165" rx="5" ry="7" fill="#362419" />
+                <ellipse cx="230" cy="165" rx="5" ry="7" fill="#362419" />
+                <circle cx="172" cy="163" r="2" fill="#FFFFFF" />
+                <circle cx="232" cy="163" r="2" fill="#FFFFFF" />
+                <!-- Cheeks -->
+                <circle cx="158" cy="178" r="8" fill="#F4A261" opacity="0.3" />
+                <circle cx="242" cy="178" r="8" fill="#F4A261" opacity="0.3" />
+                <!-- Smile -->
+                <path d="M186 188Q200 198 214 188" stroke="#8C6A58" stroke-width="3.5" fill="none" stroke-linecap="round" />
+                
+                <!-- Badge Badge Overlay -->
+                <rect x="135" y="360" width="130" height="44" rx="14" fill="#FAF7F2" stroke="#B89F91" stroke-width="1.5" />
+                <text x="200" y="388" text-anchor="middle" fill="#755443" font-size="18" font-weight="bold" font-family="'Prompt', sans-serif">ม.3 (วิทย์-คณิต)</text>
+              </svg>
+            </div>
+            
+            <div class="mt-3 text-center">
+              <span class="inline-block text-xs font-medium text-brown-500">โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="skills" class="mt-10 rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <!-- Section: About & Mindset -->
+      <section id="about" class="mt-12 grid gap-6 lg:grid-cols-2">
+        <!-- About & Education -->
+        <div class="glass-card relative overflow-hidden rounded-[2rem] border border-brown-100 p-6 sm:p-8 shadow-sm transition hover:shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-powder-100 text-powder-600 font-bold text-lg">
+              🎓
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-powder-600">About & Education</p>
+              <h2 class="text-xl font-bold text-brown-800 sm:text-2xl">ประวัติส่วนตัวและการศึกษา</h2>
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-3.5 text-sm text-brown-700 sm:text-base">
+            <div class="flex items-start gap-3 rounded-xl bg-cream-50/70 p-3">
+              <span class="font-semibold text-brown-800 min-w-[100px]">ชื่อ-นามสกุล:</span>
+              <span>ด.ญ.เบญญาภา ทองทา (พอใจ)</span>
+            </div>
+            <div class="flex items-start gap-3 rounded-xl bg-cream-50/70 p-3">
+              <span class="font-semibold text-brown-800 min-w-[100px]">การศึกษา:</span>
+              <span>โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก</span>
+            </div>
+            <div class="flex items-start gap-3 rounded-xl bg-cream-50/70 p-3">
+              <span class="font-semibold text-brown-800 min-w-[100px]">แผนการเรียน:</span>
+              <span>วิทยศาสาตร์-คณิตศาสตร์</span>
+            </div>
+            <div class="flex items-center gap-3 rounded-xl bg-powder-50 p-3 border border-powder-100">
+              <span class="font-semibold text-brown-800 min-w-[100px]">เกรดเฉลี่ย (GPAX):</span>
+              <span class="inline-flex items-center rounded-lg bg-powder-500 px-3 py-0.5 text-sm font-bold text-white shadow-sm">
+                3.97
+              </span>
+            </div>
+            <div class="flex items-start gap-3 rounded-xl bg-cream-50/70 p-3">
+              <span class="font-semibold text-brown-800 min-w-[100px]">จุดเด่น:</span>
+              <span>มีความรับผิดชอบ กระตือรือร้น และพร้อมเรียนรู้สิ่งใหม่ตลอดเวลา</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mindset & Goal -->
+        <div class="glass-card relative overflow-hidden rounded-[2rem] border border-brown-100 p-6 sm:p-8 shadow-sm transition hover:shadow-md">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-2xl bg-cream-200 text-brown-700 font-bold text-lg">
+              🌱
+            </div>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wider text-brown-500">Mindset & Goals</p>
+              <h2 class="text-xl font-bold text-brown-800 sm:text-2xl">ทัศนคติและเป้าหมาย</h2>
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-4 text-sm leading-relaxed text-brown-700 sm:text-base">
+            <div class="rounded-2xl border border-brown-100 bg-white/60 p-5 shadow-xs">
+              <p class="font-medium text-brown-800">💡 ด้านการพัฒนาตนเอง</p>
+              <p class="mt-1 text-brown-600">
+                ฉันให้ความสำคัญกับการพัฒนาตนเองอย่างต่อเนื่อง ทั้งในด้านความรู้วิชาการ ความคิดสร้างสรรค์ และทักษะการร่วมมือกับผู้อื่น เพื่อสร้างพื้นฐานที่มั่นคงสำหรับการเรียนในระดับสูงขึ้น
+              </p>
+            </div>
+
+            <div class="rounded-2xl border border-powder-100 bg-powder-50/40 p-5 shadow-xs">
+              <p class="font-medium text-brown-800">🎯 เป้าหมายในอนาคต</p>
+              <p class="mt-1 text-brown-600">
+                เป้าหมายของฉันคือเติบโตเป็นนักเรียนที่มีคุณภาพ มีวินัยและความรับผิดชอบสูง พร้อมนำความรู้ทางวิทยาศาสตร์และคณิตศาสตร์ไปประยุกต์ใช้แก้ปัญหาในชีวิตประจำวันและสร้างประโยชน์ให้แก่สังคม
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Skills -->
+      <section id="skills" class="mt-12 rounded-[2.5rem] border border-brown-100 bg-white p-6 sm:p-10 shadow-sm">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">Skills</p>
-            <h2 class="text-2xl font-bold text-slate-900">ทักษะและความสามารถ</h2>
+            <span class="text-xs font-semibold uppercase tracking-wider text-powder-600">Skills & Capabilities</span>
+            <h2 class="text-2xl font-bold text-brown-800 sm:text-3xl">ทักษะและความสามารถ</h2>
           </div>
-          <p class="max-w-2xl text-sm text-slate-600">
-            นำเสนอในรูปแบบที่เข้าใจง่ายโดยเน้นทักษะหลักที่แสดงให้เห็นถึงศักยภาพของนักเรียน
+          <p class="text-sm text-brown-500 max-w-md">
+            สรุปศักยภาพทางวิชาการ ทักษะทางสังคม และความสามารถด้านเทคโนโลยีดิจิทัล
           </p>
         </div>
 
-        <div class="mt-8 grid gap-6 lg:grid-cols-3">
-          <div class="rounded-[1.25rem] border border-slate-200 bg-sky-50 p-5">
-            <h3 class="text-lg font-semibold text-slate-900">ทักษะวิชาการ</h3>
-            <ul class="mt-4 space-y-3 text-sm text-slate-700">
-              <li>
-                <div class="mb-1 flex justify-between">
-                  <span>ภาษาไทย</span><span>85%</span>
+        <div class="mt-8 grid gap-6 md:grid-cols-3">
+          <!-- Academic Skills -->
+          <div class="rounded-2xl border border-powder-100 bg-powder-50/50 p-6 transition hover:border-powder-200">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-xl">📚</span>
+              <h3 class="font-semibold text-brown-800">ทักษะวิชาการ</h3>
+            </div>
+            
+            <div class="space-y-4 text-xs font-medium text-brown-700">
+              <div>
+                <div class="mb-1.5 flex justify-between">
+                  <span>ภาษาไทย</span>
+                  <span class="font-semibold text-powder-600">85%</span>
                 </div>
-                <div class="h-2 rounded-full bg-sky-200"><div class="h-2 w-[85%] rounded-full bg-sky-600"></div></div>
+                <div class="h-2.5 w-full rounded-full bg-powder-100">
+                  <div class="h-2.5 rounded-full bg-powder-400 transition-all duration-500" style="width: 85%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-1.5 flex justify-between">
+                  <span>คณิตศาสตร์</span>
+                  <span class="font-semibold text-powder-600">80%</span>
+                </div>
+                <div class="h-2.5 w-full rounded-full bg-powder-100">
+                  <div class="h-2.5 rounded-full bg-powder-400 transition-all duration-500" style="width: 80%"></div>
+                </div>
+              </div>
+
+              <div>
+                <div class="mb-1.5 flex justify-between">
+                  <span>วิทยาศาสตร์</span>
+                  <span class="font-semibold text-powder-600">82%</span>
+                </div>
+                <div class="h-2.5 w-full rounded-full bg-powder-100">
+                  <div class="h-2.5 rounded-full bg-powder-400 transition-all duration-500" style="width: 82%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Soft Skills -->
+          <div class="rounded-2xl border border-brown-100 bg-cream-50/60 p-6 transition hover:border-brown-200">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-xl">🤝</span>
+              <h3 class="font-semibold text-brown-800">Soft Skills</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-brown-700">
+              <li class="flex items-start gap-2">
+                <span class="text-powder-500 font-bold">•</span>
+                <span>ทำงานเป็นทีม รับฟังความคิดเห็นของผู้อื่น</span>
               </li>
-              <li>
-                <div class="mb-1 flex justify-between">
-                  <span>คณิตศาสตร์</span><span>80%</span>
-                </div>
-                <div class="h-2 rounded-full bg-sky-200"><div class="h-2 w-[80%] rounded-full bg-sky-600"></div></div>
+              <li class="flex items-start gap-2">
+                <span class="text-powder-500 font-bold">•</span>
+                <span>มีความรับผิดชอบ กระตือรือร้น ตรงต่อเวลา</span>
               </li>
-              <li>
-                <div class="mb-1 flex justify-between">
-                  <span>วิทยาศาสตร์</span><span>82%</span>
-                </div>
-                <div class="h-2 rounded-full bg-sky-200"><div class="h-2 w-[82%] rounded-full bg-sky-600"></div></div>
+              <li class="flex items-start gap-2">
+                <span class="text-powder-500 font-bold">•</span>
+                <span>สื่อสารความคิดอย่างชัดเจน มนุษยสัมพันธ์ดี</span>
               </li>
             </ul>
           </div>
 
-          <div class="rounded-[1.25rem] border border-slate-200 bg-amber-50 p-5">
-            <h3 class="text-lg font-semibold text-slate-900">Soft Skills</h3>
-            <ul class="mt-4 space-y-3 text-sm text-slate-700">
-              <li>• ทำงานเป็นทีมและรับฟังผู้อื่น</li>
-              <li>• มีความรับผิดชอบและกระตือรือร้น</li>
-              <li>• สื่อสารอย่างชัดเจนและเป็นมิตร</li>
-            </ul>
-          </div>
-
-          <div class="rounded-[1.25rem] border border-slate-200 bg-emerald-50 p-5">
-            <h3 class="text-lg font-semibold text-slate-900">ความสามารถพิเศษ</h3>
-            <ul class="mt-4 space-y-3 text-sm text-slate-700">
-              <li>• Canva / PowerPoint สำหรับงานนำเสนอ</li>
-              <li>• การใช้เครื่องมือดิจิทัลพื้นฐาน</li>
-              <li>• มีความคิดสร้างสรรค์และพร้อมทดลองสิ่งใหม่</li>
+          <!-- Digital & Creative -->
+          <div class="rounded-2xl border border-brown-100 bg-white p-6 shadow-xs border-dashed transition hover:border-brown-300">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="text-xl">💻</span>
+              <h3 class="font-semibold text-brown-800">ความสามารถพิเศษ</h3>
+            </div>
+            <ul class="space-y-3 text-sm text-brown-700">
+              <li class="flex items-start gap-2">
+                <span class="text-brown-400 font-bold">•</span>
+                <span>ออกแบบสื่อนำเสนอด้วย Canva & PowerPoint</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brown-400 font-bold">•</span>
+                <span>การใช้เครื่องมือและโปรแกรมดิจิทัลพื้นฐาน</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-brown-400 font-bold">•</span>
+                <span>มีความคิดสร้างสรรค์ และพร้อมเรียนรู้สิ่งใหม่</span>
+              </li>
             </ul>
           </div>
         </div>
       </section>
 
-      <section id="projects" class="mt-10">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <!-- Section: Projects & Certificates -->
+      <section id="projects" class="mt-12">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-600">Awards & Projects</p>
-            <h2 class="text-2xl font-bold text-slate-900">ผลงานและเกียรติบัตรเด่น</h2>
+            <span class="text-xs font-semibold uppercase tracking-wider text-brown-500">Featured Works</span>
+            <h2 class="text-2xl font-bold text-brown-800 sm:text-3xl">ผลงานและเกียรติบัตรเด่น</h2>
           </div>
-          <p class="max-w-2xl text-sm text-slate-600">
-            แสดงผลงานหลัก 3–5 ชิ้นในรูปแบบการ์ดที่อ่านง่ายและน่าจดจำ
+          <p class="text-sm text-brown-500">
+            รวบรวมผลงานสำคัญและเกียรติบัตรที่ได้รับ
           </p>
         </div>
 
-        <div class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
-            <div class="h-32 bg-gradient-to-br from-sky-400 to-cyan-500"></div>
+        <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <!-- Card 1 -->
+          <article class="group overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-xs transition duration-300 hover:-translate-y-1 hover:shadow-md">
+            <div class="h-36 bg-gradient-to-br from-powder-100 to-powder-200 p-4 flex items-end justify-between">
+              <span class="rounded-lg bg-white/80 px-2.5 py-1 text-xs font-medium text-powder-600 backdrop-blur-xs">
+                วิชาการ
+              </span>
+              <span class="text-2xl opacity-80 group-hover:scale-110 transition">🔬</span>
+            </div>
             <div class="p-5">
-              <h3 class="font-semibold text-slate-900">โครงงานวิทยาศาสตร์</h3>
-              <p class="mt-2 text-sm text-slate-600">พัฒนางานวิจัยและนำเสนอผลลัพธ์ในรูปแบบที่น่าสนใจ</p>
+              <h3 class="font-semibold text-brown-800 group-hover:text-powder-600 transition">โครงงานวิทยาศาสตร์</h3>
+              <p class="mt-2 text-xs leading-relaxed text-brown-600">
+                พัฒนางานวิจัย ค้นคว้าการทดลอง และนำเสนอผลลัพธ์ในรูปแบบกระบวนการทางวิทยาศาสตร์
+              </p>
             </div>
           </article>
-          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
-            <div class="h-32 bg-gradient-to-br from-amber-400 to-orange-500"></div>
+
+          <!-- Card 2 -->
+          <article class="group overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-xs transition duration-300 hover:-translate-y-1 hover:shadow-md">
+            <div class="h-36 bg-gradient-to-br from-cream-100 to-cream-200 p-4 flex items-end justify-between">
+              <span class="rounded-lg bg-white/80 px-2.5 py-1 text-xs font-medium text-brown-700 backdrop-blur-xs">
+                รางวัล
+              </span>
+              <span class="text-2xl opacity-80 group-hover:scale-110 transition">🏆</span>
+            </div>
             <div class="p-5">
-              <h3 class="font-semibold text-slate-900">เกียรติบัตรแข่งขัน</h3>
-              <p class="mt-2 text-sm text-slate-600">ได้รับรางวัลจากกิจกรรมสร้างสรรค์และกิจกรรมส่งเสริมทักษะ</p>
+              <h3 class="font-semibold text-brown-800 group-hover:text-brown-600 transition">เกียรติบัตรแข่งขัน</h3>
+              <p class="mt-2 text-xs leading-relaxed text-brown-600">
+                รางวัลจากการเข้าร่วมกิจกรรมส่งเสริมทักษะวิชาการและการแข่งขันสร้างสรรค์ต่างๆ
+              </p>
             </div>
           </article>
-          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
-            <div class="h-32 bg-gradient-to-br from-emerald-400 to-green-600"></div>
+
+          <!-- Card 3 -->
+          <article class="group overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-xs transition duration-300 hover:-translate-y-1 hover:shadow-md">
+            <div class="h-36 bg-gradient-to-br from-powder-50 to-cream-100 p-4 flex items-end justify-between">
+              <span class="rounded-lg bg-white/80 px-2.5 py-1 text-xs font-medium text-brown-700 backdrop-blur-xs">
+                จิตอาสา
+              </span>
+              <span class="text-2xl opacity-80 group-hover:scale-110 transition">🌱</span>
+            </div>
             <div class="p-5">
-              <h3 class="font-semibold text-slate-900">กิจกรรมจิตอาสา</h3>
-              <p class="mt-2 text-sm text-slate-600">มีส่วนร่วมในการช่วยเหลือชุมชนและพัฒนาสังคมอย่างต่อเนื่อง</p>
+              <h3 class="font-semibold text-brown-800 group-hover:text-powder-600 transition">กิจกรรมจิตอาสา</h3>
+              <p class="mt-2 text-xs leading-relaxed text-brown-600">
+                เข้าร่วมโครงการช่วยเหลือชุมชนและกิจกรรมบำเพ็ญประโยชน์เพื่อสังคมอย่างต่อเนื่อง
+              </p>
             </div>
           </article>
-          <article class="overflow-hidden rounded-[1.25rem] border border-slate-200 bg-white shadow-sm">
-            <div class="h-32 bg-gradient-to-br from-fuchsia-400 to-violet-500"></div>
+
+          <!-- Card 4 -->
+          <article class="group overflow-hidden rounded-2xl border border-brown-100 bg-white shadow-xs transition duration-300 hover:-translate-y-1 hover:shadow-md">
+            <div class="h-36 bg-gradient-to-br from-cream-200 to-powder-100 p-4 flex items-end justify-between">
+              <span class="rounded-lg bg-white/80 px-2.5 py-1 text-xs font-medium text-powder-600 backdrop-blur-xs">
+                ดิจิทัล
+              </span>
+              <span class="text-2xl opacity-80 group-hover:scale-110 transition">🎨</span>
+            </div>
             <div class="p-5">
-              <h3 class="font-semibold text-slate-900">ผลงานดิจิทัล</h3>
-              <p class="mt-2 text-sm text-slate-600">สร้างสื่อการเรียนรู้และงานนำเสนอด้วยเครื่องมือดิจิทัล</p>
+              <h3 class="font-semibold text-brown-800 group-hover:text-brown-600 transition">ผลงานสื่อดิจิทัล</h3>
+              <p class="mt-2 text-xs leading-relaxed text-brown-600">
+                การสร้างสรรค์สื่อนำเสนอและสื่อการเรียนรู้แบบดิจิทัลด้วยโปรแกรมประยุกต์
+              </p>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="mt-10 rounded-[1.5rem] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+      <!-- Section: Activities -->
+      <section id="activities" class="mt-12 rounded-[2.5rem] border border-brown-100 bg-cream-50/50 p-6 sm:p-10 shadow-sm">
+        <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-700">Activities</p>
-            <h2 class="text-2xl font-bold text-slate-900">กิจกรรมและประสบการณ์</h2>
+            <span class="text-xs font-semibold uppercase tracking-wider text-powder-600">Experiences</span>
+            <h2 class="text-2xl font-bold text-brown-800 sm:text-3xl">กิจกรรมและประสบการณ์</h2>
           </div>
-          <p class="max-w-2xl text-sm text-slate-600">
-            ภาพกิจกรรมช่วยให้ผู้รับชมเห็นถึงความกระตือรือร้นและความพร้อมในการเรียนต่อ
+          <p class="text-sm text-brown-500">
+            ประสบการณ์นอกห้องเรียนที่ช่วยส่งเสริมภาวะผู้นำและการทำงานร่วมกัน
           </p>
         </div>
 
         <div class="mt-8 grid gap-6 md:grid-cols-2">
-          <div class="overflow-hidden rounded-[1.25rem] border border-slate-200">
-            <div class="h-48 bg-gradient-to-br from-sky-100 to-white p-6">
-              <div class="flex h-full items-end rounded-[1rem] border border-sky-200 bg-white/60 p-4">
-                <p class="text-lg font-semibold text-slate-800">กิจกรรมคณะกรรมการนักเรียน</p>
+          <!-- Activity Card 1 -->
+          <div class="overflow-hidden rounded-2xl border border-brown-100 bg-white p-2 shadow-xs transition hover:border-powder-200">
+            <div class="relative flex h-44 items-end rounded-xl bg-gradient-to-r from-powder-100 via-cream-100 to-powder-50 p-6">
+              <div class="absolute right-4 top-4 rounded-full bg-white/70 px-3 py-1 text-xs font-medium text-brown-600">
+                ผู้นำนักเรียน
+              </div>
+              <div class="relative z-10">
+                <h3 class="text-lg font-bold text-brown-800">กิจกรรมคณะกรรมการนักเรียน</h3>
+                <p class="text-xs text-brown-600 mt-1">มีส่วนร่วมในการวางแผน จัดกิจกรรม และเป็นตัวแทนนักเรียนในการประสานงาน</p>
               </div>
             </div>
           </div>
-          <div class="overflow-hidden rounded-[1.25rem] border border-slate-200">
-            <div class="h-48 bg-gradient-to-br from-amber-100 to-white p-6">
-              <div class="flex h-full items-end rounded-[1rem] border border-amber-200 bg-white/60 p-4">
-                <p class="text-lg font-semibold text-slate-800">โครงการจิตอาสาและบริการชุมชน</p>
+
+          <!-- Activity Card 2 -->
+          <div class="overflow-hidden rounded-2xl border border-brown-100 bg-white p-2 shadow-xs transition hover:border-brown-200">
+            <div class="relative flex h-44 items-end rounded-xl bg-gradient-to-r from-cream-100 via-powder-50 to-cream-200 p-6">
+              <div class="absolute right-4 top-4 rounded-full bg-white/70 px-3 py-1 text-xs font-medium text-brown-600">
+                บริการสังคม
+              </div>
+              <div class="relative z-10">
+                <h3 class="text-lg font-bold text-brown-800">โครงการจิตอาสาและบริการชุมชน</h3>
+                <p class="text-xs text-brown-600 mt-1">ร่วมมือกับเพื่อนๆ ในการบำเพ็ญประโยชน์และจัดกิจกรรมแบ่งปันความรู้</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="mt-10 rounded-[1.5rem] border border-slate-200 bg-slate-900 p-6 text-white shadow-sm sm:p-8">
-        <div class="grid gap-6 lg:grid-cols-[1fr_0.8fr]">
+      <!-- Section: Contact -->
+      <section id="contact" class="mt-12 overflow-hidden rounded-[2.5rem] border border-brown-700 bg-brown-800 p-8 text-cream-50 shadow-md sm:p-12">
+        <div class="grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <div>
-            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-300">Contact</p>
-            <h2 class="mt-3 text-2xl font-bold">ช่องทางติดต่อ</h2>
-            <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300">
-              หากต้องการข้อมูลเพิ่มเติม สามารถติดต่อผ่านช่องทางด้านล่าง เพื่อขอคำแนะนำหรือแลกเปลี่ยนข้อมูลเพิ่มเติม
+            <span class="inline-block rounded-full bg-brown-700 px-3 py-1 text-xs font-semibold text-powder-200">
+              GET IN TOUCH
+            </span>
+            <h2 class="mt-3 text-2xl font-bold text-white sm:text-3xl">ช่องทางติดต่อ</h2>
+            <p class="mt-3 text-sm leading-relaxed text-brown-100 sm:text-base">
+              หากต้องการสอบถามข้อมูลเพิ่มเติมเกี่ยวกับแฟ้มสะสมผลงาน หรือแลกเปลี่ยนข้อมูลการศึกษา สามารถติดต่อหนูได้ทางช่องทางด้านล่างนี้เลยค่ะ
             </p>
           </div>
-          <div class="rounded-[1.25rem] bg-white/10 p-5">
-            <ul class="space-y-3 text-sm text-slate-200">
-              <li>📧 อีเมล: [porjaibenyapa@gmail.com]</li>
-              <li>📱 โทรศัพท์: [066-1322123]</li>
-              <li>💬 Line / Facebook: [Porjai Thongtha]</li>
-            </ul>
+
+          <div class="rounded-2xl border border-brown-600 bg-brown-700/60 p-6 backdrop-blur-sm space-y-4">
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-powder-500 text-white font-bold">
+                ✉️
+              </div>
+              <div>
+                <p class="text-xs text-brown-200">อีเมล</p>
+                <a href="mailto:porjaibenyapa@gmail.com" class="text-sm font-medium text-white hover:text-powder-200 transition">
+                  porjaibenyapa@gmail.com
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-powder-500 text-white font-bold">
+                📞
+              </div>
+              <div>
+                <p class="text-xs text-brown-200">โทรศัพท์</p>
+                <a href="tel:0661322123" class="text-sm font-medium text-white hover:text-powder-200 transition">
+                  066-1322123
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-powder-500 text-white font-bold">
+                💬
+              </div>
+              <div>
+                <p class="text-xs text-brown-200">Line / Facebook</p>
+                <p class="text-sm font-medium text-white">
+                  Porjai Thongtha
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="mt-12 border-t border-brown-100 bg-cream-50/80 py-6 text-center text-xs text-brown-500">
+      <div class="mx-auto max-w-6xl px-4">
+        <p>© E-Portfolio - ด.ญ.เบญญาภา ทองทา (พอใจ) | โรงเรียนวิทยาศาสตร์จุฬาภรณราชวิทยาลัย พิษณุโลก</p>
+      </div>
+    </footer>
+
+    <!-- Mobile Navigation Toggle Script -->
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileLinks = document.querySelectorAll('.mobile-link');
+
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    </script>
   </body>
 </html>
